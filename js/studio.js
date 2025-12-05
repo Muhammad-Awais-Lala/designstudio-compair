@@ -8,8 +8,17 @@ const currentWallEl = document.getElementById('currentWall');
 const currentFloorEl = document.getElementById('currentFloor');
 const currentPillarsEl = document.getElementById('currentPillars');
 
-const BASE_IMAGE = 'assets/washroom.png'; // Single base image
-const API_ENDPOINT = '/api/apply-sheet'; // Backend API endpoint (dummy for now)
+// Get image URL from URL parameter or sessionStorage
+const urlParams = new URLSearchParams(window.location.search);
+const imageFromUrl = urlParams.get('image');
+const imageFromSession = sessionStorage.getItem('selectedRoomImage');
+
+// Use URL parameter first, then sessionStorage, then fallback
+const BASE_IMAGE = imageFromUrl || imageFromSession || 'assets/washroom.png';
+const API_ENDPOINT = '/api/apply-sheet'; // Backend API endpoint
+
+console.log('🏠 Loading room with base image:', BASE_IMAGE);
+
 
 // 🟢 Define hotspot coordinates
 const hotspots = [
@@ -18,10 +27,8 @@ const hotspots = [
     { name: 'Floor', x: 0.40, y: 0.82 }
 ];
 
-// 📦 Store the current overlay image from backend (only one at a time)
 let currentOverlayImage = null;
 
-// 📊 Track last selection made
 let lastSelection = {
     hotspotName: null,
     sheetName: null

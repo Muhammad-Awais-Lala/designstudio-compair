@@ -86,20 +86,20 @@
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   }
 
-  /* Enhanced hotspot marker style */
+  /* Enhanced hotspot marker style - White Border Circle Design */
   .hotspot-marker {
     position: absolute;
-    width: 36px;
-    height: 36px;
-    border: 3px solid white;
+    width: 24px;
+    height: 24px;
+    border: 2px solid white;
     border-radius: 50%;
-    background-color: var(--primary-color);
+    background-color: rgba(0, 0, 0, 0.2);
     /* allow the marker to receive clicks */
     pointer-events: auto;
     cursor: pointer;
     transform: translate(-50%, -50%);
     animation: pulse 2s infinite ease-in-out;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,23 +108,27 @@
 
   .hotspot-marker::after {
     content: '';
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     background: white;
     border-radius: 50%;
   }
 
   @keyframes pulse {
 
-    0%,
-    100% {
+    0% {
       transform: translate(-50%, -50%) scale(1);
-      box-shadow: 0 4px 12px rgba(239, 226, 35, 0.5);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
     }
 
-    50% {
-      transform: translate(-50%, -50%) scale(1.2);
-      box-shadow: 0 6px 20px rgba(239, 226, 35, 0.8);
+    70% {
+      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
   }
 
